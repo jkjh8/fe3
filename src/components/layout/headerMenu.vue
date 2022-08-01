@@ -41,7 +41,7 @@
       class="q-px-md q-py-sm"
       style="border-radius: 10px"
       flat
-      to="/eventlog"
+      to="/logs/eventLogs"
     >
       <div>Event Log</div>
     </q-btn>

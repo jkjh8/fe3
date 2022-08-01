@@ -6,6 +6,7 @@ import { api } from 'src/composables/useAxios'
 import { ISOToDate } from 'src/composables/useDate'
 
 import PageName from 'components/layout/pageName.vue'
+import ConfirmDialog from 'components/dialogs/confirmDialog.vue'
 
 const $q = useQuasar()
 const $n = useNotify()
@@ -33,6 +34,54 @@ async function getUsers() {
     console.error('관리자 사용자 정보 확인 오류 ', err)
     $n.error('사용자 정보를 가져올 수 없습니다.')
   }
+}
+
+async function setAdmin(user) {
+  $q.dialog({
+    component: ConfirmDialog,
+    componentProps: {
+      icon: 'info',
+      iconColor: 'primary',
+      title: '사용자 권한변경',
+      caption: user.admin
+        ? '관리자 권한을 회수 합니다.'
+        : '관리자 권한을 부여 합니다.'
+    }
+  }).onOk(async () => {
+    try {
+      $q.loading.show()
+      await api.get(`/auth/setadmin?=${user._id}&admin=${!user.admin}`)
+      await getUsers()
+      $q.loading.hide()
+    } catch (err) {
+      $q.loading.hide()
+      console.error('관리자 권한 변경 오류', err)
+      $n.error('사용자 권한 변경에 문제가 발생하였습니다')
+    }
+  })
+}
+
+async function deleteUser(user) {
+  $q.dialog({
+    component: ConfirmDialog,
+    componentProps: {
+      icon: 'warning',
+      iconColor: 'red-10',
+      title: '사용자 계정 삭제',
+      caption: `${user.email} 사용자를 삭제 합니다.`
+    }
+  }).onOk(async () => {
+    try {
+      $q.loading.show()
+      await api.get(`/auth/deleteuser?email=${user.email}`)
+      getUsers()
+      $q.loading.hide()
+    } catch (err) {
+      $q.loading.hide()
+      console.error('사용자 계정 삭제 오류', err)
+      $n.error('사용자 삭제 중 문제가 발생하였습니다')
+    }
+  })
 }
 
 onMounted(() => {
@@ -150,11 +199,11 @@ onMounted(() => {
           </q-td>
 
           <q-td key="createdAt" :props="props">
-            {{ ISOToDate(props.row.createAt) }}
+            {{ ISOToDate(props.row.createdAt) }}
           </q-td>
 
           <q-td key="lastLogin" :props="props">
-            {{ ISOToDate(props.row.lastLogin) }}
+            {{ ISOToDate(props.row.loginAt) }}
           </q-td>
 
           <q-td key="actions" :props="props">

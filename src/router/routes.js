@@ -17,6 +17,16 @@ const routes = [
     ]
   },
   {
+    path: '/logs',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: 'eventlogs',
+        component: () => import('src/pages/logs/eventLogs.vue')
+      }
+    ]
+  },
+  {
     path: '/admin',
     component: () => import('layouts/MainLayout.vue'),
     children: [
