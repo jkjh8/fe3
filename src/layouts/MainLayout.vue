@@ -10,14 +10,12 @@ const router = useRouter();
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header class="header row justify-between items-center">
-      <div class="row items-center">
-        <div class="row q-gutter-x-sm pointer" @click="router.push('/')">
-          <q-icon name="svguse:icons.svg#logo" size="md" />
-          <div class="header-font">Media Server</div>
-        </div>
+      <div class="row q-gutter-x-sm pointer" @click="router.push('/')">
+        <q-icon name="svguse:icons.svg#logo" size="md" />
+        <div class="header-font">Media Server</div>
       </div>
       <!-- Menu Components -->
-      <HeaderMenu />
+      <HeaderMenu class="center" />
       <UserStatus />
     </q-header>
 
@@ -28,3 +26,11 @@ const router = useRouter();
     </q-page-container>
   </q-layout>
 </template>
+
+<style scoped>
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
