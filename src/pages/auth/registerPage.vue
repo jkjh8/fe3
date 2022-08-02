@@ -4,12 +4,7 @@ import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { api } from 'src/composables/useAxios'
 import useNotify from 'src/composables/useNotify'
-import {
-  required,
-  checkTypeEmail,
-  minLength,
-  checkEmailUsed
-} from 'src/composables/useRules'
+import { required, checkTypeEmail, minLength } from 'src/composables/useRules'
 
 const $q = useQuasar()
 const $r = useRouter()
@@ -25,6 +20,14 @@ const userInfo = reactive({
 
 const showPassword = ref(false)
 const showChkPassword = ref(false)
+
+async function checkEmailUsed(v) {
+  const r = await api.get(`/auth/checkEmailUsed?email=${v}`)
+  if (r && r.data) {
+    return '이미 사용중인 이메일 입니다.'
+  }
+  return true
+}
 
 async function onSubmit() {
   try {

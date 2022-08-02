@@ -17,6 +17,20 @@ const routes = [
     ]
   },
   {
+    path: '/zones',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/zones/zonesPage.vue')
+      },
+      {
+        path: 'devices',
+        component: () => import('pages/zones/devicesPage.vue')
+      }
+    ]
+  },
+  {
     path: '/logs',
     component: () => import('layouts/MainLayout.vue'),
     children: [

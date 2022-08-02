@@ -121,6 +121,7 @@ onMounted(() => {
         }
       ]"
       :rows="eventlog"
+      wrap-cells
       :pagination="{ rowsPerPage: rowsPerPage }"
       hide-pagination
       row-key="_id"
@@ -130,7 +131,7 @@ onMounted(() => {
           :props="props"
           :class="setColorFromEventlogLevel(props.row.level)"
         >
-          <q-td key="createdAt" :props="props">
+          <q-td key="createdAt" :props="props" style="min-width: 180px">
             {{ ISOToDate(props.row.createdAt) }}
           </q-td>
 
@@ -146,7 +147,7 @@ onMounted(() => {
             {{ props.row.zones.join(',') }}
           </q-td>
 
-          <q-td key="message" :props="props">
+          <q-td key="message" :props="props" style="min-width: 300px">
             {{ props.row.message }}
           </q-td>
         </q-tr>
