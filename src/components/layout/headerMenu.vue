@@ -37,17 +37,29 @@
       </q-menu>
     </q-btn>
 
-    <q-btn
-      class="q-px-md q-py-sm"
-      style="border-radius: 10px"
-      flat
-      to="/logs/eventLogs"
-    >
+    <q-btn class="q-px-md q-py-sm" style="border-radius: 10px" flat>
       <div>Event Log</div>
+      <q-menu :offset="[0, 20]">
+        <q-list separator style="min-width: 300px">
+          <q-item clickable to="/logs/eventLogs">
+            <q-item-section avatar>
+              <q-avatar
+                style="border: solid 1px #eee"
+                rounded
+                icon="svguse:icons.svg#serverColorInfo"
+              ></q-avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label> 이벤트 로그</q-item-label>
+              <q-item-label caption> 이벤트 로그 </q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-menu>
     </q-btn>
+
     <q-btn class="q-px-md q-py-sm" style="border-radius: 10px" flat>
       <div>ADMIN</div>
-
       <q-menu :offset="[0, 20]">
         <q-list separator style="min-width: 300px">
           <q-item clickable to="/admin/users">
