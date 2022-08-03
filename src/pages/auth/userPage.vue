@@ -25,7 +25,11 @@ async function deleteUser() {
   }).onOk(async () => {
     try {
       $q.loading.show()
-      const r = await api.get(`/auth/deleteuser?email=${user.value.email}`)
+      const r = await api.get(
+        `/auth/deleteuser?item=${encodeURIComponent(
+          JSON.stringify(user.value)
+        )}`
+      )
       $n.info('사용자 탈퇴', '사용자 탈퇴가 완료 되었습니다.')
       $q.loading.hide()
       $r.push('/')

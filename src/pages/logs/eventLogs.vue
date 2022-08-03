@@ -21,9 +21,13 @@ async function getEventLogs() {
   try {
     $q.loading.show()
     const r = await api.get(
-      `/eventlog?page=${pages.value}&limit=${
-        rowsPerPage.value
-      }&search=${encodeURIComponent(filter.value)}`
+      `/eventlog?options=${encodeURIComponent(
+        JSON.stringify({
+          page: pages.value,
+          limit: rowsPerPage.value,
+          search: filter.value
+        })
+      )}`
     )
     $q.loading.hide()
     eventlog.value = r.data.docs

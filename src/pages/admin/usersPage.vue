@@ -50,7 +50,9 @@ async function setAdmin(user) {
   }).onOk(async () => {
     try {
       $q.loading.show()
-      await api.get(`/auth/setadmin?=${user._id}&admin=${!user.admin}`)
+      await api.get(
+        `/auth/setadmin?item=${encodeURIComponent(JSON.stringify(user))}`
+      )
       await getUsers()
       $q.loading.hide()
     } catch (err) {
@@ -73,7 +75,9 @@ async function deleteUser(user) {
   }).onOk(async () => {
     try {
       $q.loading.show()
-      await api.get(`/auth/deleteuser?email=${user.email}`)
+      await api.get(
+        `/auth/deleteuser?item=${encodeURIComponent(JSON.stringify(user))}`
+      )
       getUsers()
       $q.loading.hide()
     } catch (err) {
