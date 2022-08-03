@@ -43,7 +43,7 @@ async function setAdmin(user) {
       icon: 'info',
       iconColor: 'primary',
       title: '사용자 권한변경',
-      caption: user.admin
+      message: user.admin
         ? '관리자 권한을 회수 합니다.'
         : '관리자 권한을 부여 합니다.'
     }
@@ -70,7 +70,7 @@ async function deleteUser(user) {
       icon: 'warning',
       iconColor: 'red-10',
       title: '사용자 계정 삭제',
-      caption: `${user.email} 사용자를 삭제 합니다.`
+      message: `${user.email} 사용자를 삭제 합니다.`
     }
   }).onOk(async () => {
     try {

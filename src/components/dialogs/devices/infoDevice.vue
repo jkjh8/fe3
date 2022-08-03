@@ -32,16 +32,13 @@ onMounted(async () => {
 <template>
   <q-dialog ref="dialogRef">
     <q-card class="q-dialog-plugin">
-      <q-card-section>
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="svguse:icons.svg#serverColorInfo" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>하드웨어 상세정보</q-item-label>
-            <q-item-label caption>하드웨어 상태 정보</q-item-label>
-          </q-item-section>
-        </q-item>
+      <q-card-section class="row no-wrap q-gutter-sm">
+        <q-icon
+          style="margin-top: 10px"
+          name="svguse:icons.svg#serverColorInfo"
+          size="1.5rem"
+        />
+        <div class="name">하드웨어 상세정보</div>
       </q-card-section>
 
       <q-card-section>

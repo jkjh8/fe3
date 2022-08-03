@@ -81,7 +81,7 @@ function deviceDelete(item) {
       icon: 'delete',
       iconColor: 'red-10',
       title: '삭제',
-      caption: `${item.name} ${item.ipaddress} 해당 디바이스를 삭제 하시겠습니까?`
+      message: `${item.name} 디바이스를 삭제 하시겠습니까?`
     }
   }).onOk(async () => {
     try {

@@ -20,7 +20,7 @@ async function deleteUser() {
       iconColor: 'red-10',
       btnColor: 'red-10',
       title: '사용자 탈퇴',
-      caption: '사용자 탈퇴 하시겠습니까?'
+      message: '사용자 탈퇴 하시겠습니까?'
     }
   }).onOk(async () => {
     try {

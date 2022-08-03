@@ -40,20 +40,16 @@ function onSubmit() {
 
 <template>
   <q-dialog ref="dialogRef" persistent>
-    <q-card class="q-dialog-plugin">
-      <q-card-section class="q-py-sm">
-        <q-item>
-          <q-item-section avatar>
-            <q-icon name="svguse:icons.svg#serverColorPlus"></q-icon>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>하드웨어 추가</q-item-label>
-            <q-item-label caption>하드웨어 추가</q-item-label>
-          </q-item-section>
-        </q-item>
+    <q-card class="q-dialog-plugin" style="width: 360px">
+      <q-card-section class="row no-wrap q-gutter-sm">
+        <q-icon
+          style="margin-top: 10px"
+          name="svguse:icons.svg#serverColorPlus"
+          size="1.5rem"
+        />
+        <div class="name">디바이스 추가</div>
       </q-card-section>
 
-      <q-separator />
       <q-form @submit="onSubmit">
         <q-card-section>
           <div>
