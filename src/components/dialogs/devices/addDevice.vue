@@ -40,7 +40,7 @@ function onSubmit() {
 
 <template>
   <q-dialog ref="dialogRef" persistent>
-    <q-card class="q-dialog-plugin" style="width: 360px">
+    <q-card class="q-dialog-plugin body-font" style="width: 360px">
       <q-card-section class="row no-wrap q-gutter-sm">
         <q-icon
           style="margin-top: 10px"

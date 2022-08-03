@@ -18,7 +18,7 @@ onMounted(async () => {
   try {
     $q.loading.show()
     const r = await api.get(
-      `/device/getstatusinfo?ipaddress=${props.item.ipaddress}`
+      `/device/getDetail?ipaddress=${props.item.ipaddress}`
     )
     info.value = r.data
     $q.loading.hide()
@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <q-dialog ref="dialogRef">
-    <q-card class="q-dialog-plugin">
+    <q-card class="q-dialog-plugin body-font">
       <q-card-section class="row no-wrap q-gutter-sm">
         <q-icon
           style="margin-top: 10px"

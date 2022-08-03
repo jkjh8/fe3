@@ -1,10 +1,10 @@
 <script setup>
 // import { onBeforMount } from 'vue'
 
-import { useRouter } from "vue-router";
-import HeaderMenu from "components/layout/headerMenu.vue";
-import UserStatus from "components/layout/headerUserStatus.vue";
-const router = useRouter();
+import { useRouter } from 'vue-router'
+import HeaderMenu from 'components/layout/headerMenu.vue'
+import UserStatus from 'components/layout/headerUserStatus.vue'
+const router = useRouter()
 </script>
 
 <template>

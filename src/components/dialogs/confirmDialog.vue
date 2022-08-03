@@ -16,7 +16,7 @@ const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
 
 <template>
   <q-dialog ref="dialogRef" @hide="onDialogHide">
-    <q-card class="q-dialog-plugin">
+    <q-card class="q-dialog-plugin body-font">
       <q-card-section class="row no-wrap q-gutter-sm">
         <q-icon
           style="margin-top: 10px"
