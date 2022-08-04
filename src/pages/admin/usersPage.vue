@@ -75,9 +75,7 @@ async function deleteUser(user) {
   }).onOk(async () => {
     try {
       $q.loading.show()
-      await api.get(
-        `/auth/deleteuser?item=${encodeURIComponent(JSON.stringify(user))}`
-      )
+      await api.delete(`/auth?item=${encodeURIComponent(JSON.stringify(user))}`)
       getUsers()
       $q.loading.hide()
     } catch (err) {
