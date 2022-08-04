@@ -51,6 +51,30 @@ function editZone(item) {
   })
 }
 
+function deleteZone(item) {
+  $q.dialog({
+    component: ConfirmDialog,
+    componentProps: {
+      icon: 'delete',
+      iconColor: 'red-10',
+      title: '삭제',
+      message: `${item.name} 방송구간 삭제 하시겠습니까?`
+    }
+  }).onOk(async () => {
+    try {
+      $q.loading.show()
+      await api.delete(
+        `/zones?item=${encodeURIComponent(JSON.stringify(item))}`
+      )
+      await getZones()
+      $q.loading.hide()
+    } catch (err) {
+      $q.loading.hide()
+      console.error('방송구간 삭제 오류', err)
+      $n.error('방송구간 삭제중 오류가 발생하였습니다')
+    }
+  })
+}
 onMounted(() => {
   getZones()
   getDevices()
@@ -132,7 +156,7 @@ onMounted(() => {
                   round
                   icon="delete"
                   color="negative"
-                  @click.prevent.stop="deleteCore(zone)"
+                  @click.prevent.stop="deleteZone(zone)"
                 >
                   <q-tooltip>지역삭제</q-tooltip>
                 </q-btn>
