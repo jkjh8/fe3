@@ -54,24 +54,29 @@ function updateCore(core) {
 
 async function checkZoneIndex(v) {
   try {
-    const r = await api.get(`/zones/idxexists?index=${v}`)
-    console.log(r)
+    const r = await api.get(
+      `/zones/idxexists/${encodeURIComponent(JSON.stringify({ index: v }))}`
+    )
     if (r && r.data.result) return '이미 사용중인 인덱스 입니다.'
     return true
   } catch (err) {
-    console.error('방송구간 인덱스 확인 중 오류', err)
+    console.error('지역 인덱스 확인 중 오류', err)
     return '중복 확인 중 오류가 발생하였습니다.'
   }
 }
 
 async function checkUsedCore(v) {
+  console.log(v)
   try {
-    const r = await api.get(`/zones/coreexists?coreid=${v._id}`)
-    console.log(r)
+    const r = await api.get(
+      `/zones/coreexists/${encodeURIComponent(
+        JSON.stringify({ coreId: v._id })
+      )}`
+    )
     if (r && r.data) return '이미 다른지역에 사용중인 코어 입니다.'
     return true
   } catch (err) {
-    console.error('방송 구간 코어 중복 확인 오류', err)
+    console.error('지역 코어 중복 확인 오류', err)
     return '중복 확인 중 오류가 발생하였습니다.'
   }
 }

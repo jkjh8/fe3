@@ -56,8 +56,11 @@ function updateCore(core) {
 
 async function checkZoneIndex(v) {
   try {
-    const r = await api.get(`/zones/idxexists?index=${v}&id=${zone._id}`)
-    console.log(r)
+    const r = await api.get(
+      `/zones/idxexists/${encodeURIComponent(
+        JSON.stringify({ index: v, id: zone._id })
+      )}`
+    )
     if (r && r.data.result) return '이미 사용중인 인덱스 입니다.'
     return true
   } catch (err) {
@@ -69,10 +72,12 @@ async function checkZoneIndex(v) {
 async function checkUsedCore(v) {
   try {
     const r = await api.get(
-      `/zones/coreexists?coreid=${v._id}&zoneid=${zone._id}`
+      `/zones/coreexists/${encodeURIComponent(
+        JSON.stringify({ coreId: v._id, zoneId: zone._id })
+      )}`
     )
     console.log(r)
-    if (r && r.data) return '이미 다른지역에 사용중인 코어 입니다.'
+    if (r && r.data.result) return '이미 다른지역에 사용중인 코어 입니다.'
     return true
   } catch (err) {
     console.error('방송 구간 코어 중복 확인 오류', err)

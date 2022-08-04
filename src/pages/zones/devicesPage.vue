@@ -86,9 +86,7 @@ function deviceDelete(item) {
   }).onOk(async () => {
     try {
       $q.loading.show()
-      await api.delete(
-        `/device?item=${encodeURIComponent(JSON.stringify(item))}`
-      )
+      await api.delete(`/device/${encodeURIComponent(JSON.stringify(item))}`)
       await getDevices()
       $q.loading.hide()
     } catch (err) {

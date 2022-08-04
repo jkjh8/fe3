@@ -24,13 +24,21 @@ const device = reactive({
 })
 
 async function checkDeviceIndex(v) {
-  const r = await api.get(`/device/idxexists?index=${v}&id=${device._id}`)
+  const r = await api.get(
+    `/device/idxexists/${encodeURIComponent(
+      JSON.stringify({ index: v, id: device._id })
+    )}`
+  )
   if (r && r.data.result) return '이미 사용중인 인덱스 입니다.'
   return true
 }
 
 async function checkIpaddressExists(v) {
-  const r = await api.get(`/device/ipexists?ipaddress=${v}&id=${device._id}`)
+  const r = await api.get(
+    `/device/ipexists/${encodeURIComponent(
+      JSON.stringify({ ipaddress: v, id: device._id })
+    )}`
+  )
   if (r && r.data.result) return '이미 사용중인 아이피 주소 입니다.'
   return true
 }
