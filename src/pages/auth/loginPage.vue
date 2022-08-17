@@ -59,6 +59,11 @@ onMounted(() => {
 
 <template>
   <div class="center q-gutter-y-sm">
+    <div class="row justify-center q-py-md">
+      <q-avatar size="10rem" color="primary">
+        <q-icon name="person" size="7rem" color="white" />
+      </q-avatar>
+    </div>
     <div class="text-grey-6" style="text-align: center">
       이메일로 로그인하기
     </div>
@@ -112,7 +117,7 @@ onMounted(() => {
   position: absolute;
   min-width: 300px;
   left: 50%;
-  top: 25%;
+  top: 15%;
   transform: translateX(-50%);
 }
 </style>

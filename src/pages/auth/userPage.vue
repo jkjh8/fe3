@@ -42,87 +42,76 @@ async function deleteUser() {
 
 <template>
   <div class="column items-center q-gutter-y-md">
-    <q-card style="min-width: 400px; max-width: 600px">
-      <q-card-section class="q-py-sm">
+    <div class="row justify-center q-py-md">
+      <q-avatar size="10rem" color="primary">
+        <q-icon name="person" size="7rem" color="white" />
+      </q-avatar>
+    </div>
+    <div class="q-gutter-y-md" style="min-width: 400px; max-width: 600px">
+      <div class="row justify-center">
+        <div>나의 계정 및 로그인 정보</div>
+      </div>
+      <q-list v-if="user">
         <q-item>
-          <q-item-section avatar>
-            <q-icon name="svguse:icons.svg#usersColor" size="md" />
-          </q-item-section>
           <q-item-section>
-            <q-item-label>사용자 정보</q-item-label>
-            <q-item-label caption>나의 계정 및 로그인 정보</q-item-label>
+            <q-item-label> 이름 </q-item-label>
+            <q-item-label caption>{{ user.name }}</q-item-label>
           </q-item-section>
         </q-item>
-      </q-card-section>
-      <q-separator />
 
-      <q-card-section>
-        <q-list v-if="user">
-          <q-item>
-            <q-item-section>
-              <q-item-label> 이름 </q-item-label>
-              <q-item-label caption>{{ user.name }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 이메일 </q-item-label>
+            <q-item-label caption>{{ user.email }}</q-item-label>
+          </q-item-section>
+        </q-item>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 이메일 </q-item-label>
-              <q-item-label caption>{{ user.email }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 관리자 </q-item-label>
+            <q-item-label caption>{{ user.admin }}</q-item-label>
+          </q-item-section>
+        </q-item>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 관리자 </q-item-label>
-              <q-item-label caption>{{ user.admin }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 사용자 등급 </q-item-label>
+            <q-item-label caption>{{ user.level }}</q-item-label>
+          </q-item-section>
+        </q-item>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 사용자 등급 </q-item-label>
-              <q-item-label caption>{{ user.level }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 로그인 횟수 </q-item-label>
+            <q-item-label caption>{{ user.numberOfLogin }}</q-item-label>
+          </q-item-section>
+        </q-item>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 로그인 횟수 </q-item-label>
-              <q-item-label caption>{{ user.numberOfLogin }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 마지막 로그인 </q-item-label>
+            <q-item-label caption>{{
+              moment(user.loginAt).format('YYYY-MM-DD hh:mm:ss a')
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 마지막 로그인 </q-item-label>
-              <q-item-label caption>{{
-                moment(user.loginAt).format('YYYY-MM-DD hh:mm:ss a')
-              }}</q-item-label>
-            </q-item-section>
-          </q-item>
+        <q-item>
+          <q-item-section>
+            <q-item-label> 가입일 </q-item-label>
+            <q-item-label caption>{{
+              moment(user.createdAt).format('YYYY-MM-DD hh:mm:ss a')
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
 
-          <q-item>
-            <q-item-section>
-              <q-item-label> 가입일 </q-item-label>
-              <q-item-label caption>{{
-                moment(user.createdAt).format('YYYY-MM-DD hh:mm:ss a')
-              }}</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-      <q-card-actions align="right">
-        <q-btn
-          unelevated
-          color="red-10"
-          label="탈퇴하기"
-          @click="deleteUser"
-        ></q-btn>
-      </q-card-actions>
-    </q-card>
+      <div class="row justify-end">
+        <q-btn unelevated color="red-10" label="탈퇴하기" @click="deleteUser" />
+      </div>
+    </div>
     <div>
-      <router-link class="text-grey-6" to="'/">홈으로 돌아가기</router-link>
+      <router-link class="text-grey-6" to="/">홈으로 돌아가기</router-link>
     </div>
   </div>
 </template>

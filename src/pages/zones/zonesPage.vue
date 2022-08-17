@@ -102,7 +102,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div>
+  <div v-if="zones.length">
     <q-list>
       <div v-for="zone in zones" :key="zone.index">
         <q-expansion-item
@@ -221,12 +221,24 @@ onMounted(() => {
       </div>
     </q-list>
   </div>
+  <div v-else>
+    <div class="alert-text">등록된 방송구간이 없습니다</div>
+  </div>
 </template>
 
 <style scoped>
 .children-card {
   width: 10rem;
   height: ' 100%';
+}
+.alert-text {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ccc;
+  font-family: nanumSquare;
+  font-size: 1.5rem;
 }
 
 .text-over-flow {

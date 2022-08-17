@@ -5,6 +5,13 @@
   "productName": "feforbs",
   "author": "jkjh8 <jkjh82@naver.com>",
   "private": true,
+  "request": "launch",
+  "url": "http://localhost:8081",
+  "webRoot": "${workspaceFolder}/src",
+  "breakOnLoad": true,
+  "sourceMapPathOverrides": {
+    "webpack://package-name/./src/*": "${webRoot}/*"
+  },
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",

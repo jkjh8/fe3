@@ -49,6 +49,11 @@ async function onSubmit() {
 
 <template>
   <div class="center q-gutter-y-sm">
+    <div class="row justify-center q-py-md">
+      <q-avatar size="10rem" color="primary">
+        <q-icon name="person_add" size="6rem" color="white" />
+      </q-avatar>
+    </div>
     <div class="text-grey-6" style="text-align: center">이메일로 가입하기</div>
     <q-separator />
     <q-form @submit="onSubmit" class="q-pt-sm">
@@ -124,7 +129,7 @@ async function onSubmit() {
   position: absolute;
   min-width: 300px;
   left: 50%;
-  top: 25%;
+  top: 15%;
   transform: translateX(-50%);
 }
 </style>
