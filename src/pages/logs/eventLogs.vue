@@ -7,6 +7,7 @@ import { ISOToDate } from 'src/composables/useDate'
 
 import PageName from 'components/layout/pageName.vue'
 import ConfirmDialog from 'components/dialogs/confirmDialog.vue'
+import DnEventLog from 'components/dialogs/logs/dnEventlogs.vue'
 
 const $q = useQuasar()
 const $n = useNotify()
@@ -17,7 +18,19 @@ const rowsPerPage = ref(10)
 const totalPages = ref(0)
 const filter = ref('')
 
-async function getEventLogs() {
+async function fnDnEventlogs() {
+  $q.dialog({
+    component: DnEventLog
+  }).onOk((args) => {
+    try {
+      console.log(args)
+    } catch (err) {
+      console.error(err)
+    }
+  })
+}
+
+async function fnGetEventLogs() {
   try {
     $q.loading.show()
     const r = await api.get(
@@ -57,7 +70,7 @@ function setColorFromEventlogLevel(level) {
 }
 
 onMounted(() => {
-  getEventLogs()
+  fnGetEventLogs()
 })
 </script>
 
@@ -67,7 +80,8 @@ onMounted(() => {
       <PageName
         name="이벤트 로그"
         caption="이벤트 로그 및 방송 기록"
-        icon="svguse:icons.svg#serverColorInfo"
+        icon="event_note"
+        iconColor="yellow-10"
       />
       <div class="row items-center q-gutter-x-sm">
         <q-input
@@ -75,14 +89,29 @@ onMounted(() => {
           filled
           dense
           label="Search"
-          @keyup.enter="getEventLogs"
+          @keyup.enter="fnGetEventLogs"
         >
           <template #append>
-            <q-icon class="pointer" name="search" @click="getEventLogs" />
+            <q-icon class="pointer" name="search" @click="fnGetEventLogs" />
           </template>
         </q-input>
-        <q-btn icon="refresh" round flat color="primary">
+        <q-btn
+          icon="refresh"
+          round
+          flat
+          color="primary"
+          @click="fnGetEventLogs"
+        >
           <q-tooltip>새로고침</q-tooltip>
+        </q-btn>
+        <q-btn
+          icon="download"
+          round
+          flat
+          color="primary"
+          @click="fnDnEventlogs"
+        >
+          <q-tooltip>설정</q-tooltip>
         </q-btn>
       </div>
     </div>
@@ -164,7 +193,7 @@ onMounted(() => {
       :max-pages="rowsPerPage"
       direction-links
       boundary-links
-      @update:model-value="getEventLogs"
+      @update:model-value="fnGetEventLogs"
     />
   </div>
 </template>
