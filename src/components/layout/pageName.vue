@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <q-item>
     <q-item-section avatar>
-      <q-icon :name="icon" size="md" :color="iconColor" />
+      <q-icon :name="icon" size="md" />
     </q-item-section>
     <q-item-section>
       <q-item-label> {{ name }} </q-item-label>

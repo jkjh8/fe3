@@ -80,8 +80,7 @@ onMounted(() => {
       <PageName
         name="이벤트 로그"
         caption="이벤트 로그 및 방송 기록"
-        icon="event_note"
-        iconColor="yellow-10"
+        icon="svguse:icons.svg#folderColor"
       />
       <div class="row items-center q-gutter-x-sm">
         <q-input
