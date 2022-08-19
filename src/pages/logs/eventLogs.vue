@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
+import FileSaver from 'file-saver'
 import useNotify from 'src/composables/useNotify'
 import { api } from 'src/composables/useAxios'
 import { ISOToDate } from 'src/composables/useDate'
@@ -24,6 +25,20 @@ async function fnDnEventlogs() {
   }).onOk((args) => {
     try {
       console.log(args)
+      api
+        .get(
+          `eventlog/download?options=${encodeURIComponent(
+            JSON.stringify(args)
+          )}`,
+          { responseType: 'blob' }
+        )
+        .then((res) => {
+          const blob = new bolb([res.data], { type: 'text/csv' })
+          FileSaver.saveAs(
+            blob,
+            `${args.start.replace('/', '')}-${args.end.replace('/', '')}.csv`
+          )
+        })
     } catch (err) {
       console.error(err)
     }
