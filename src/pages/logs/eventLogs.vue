@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
+import moment from 'moment'
 import FileSaver from 'file-saver'
 import useNotify from 'src/composables/useNotify'
 import { api } from 'src/composables/useAxios'
@@ -33,10 +34,12 @@ async function fnDnEventlogs() {
           { responseType: 'blob' }
         )
         .then((res) => {
-          const blob = new bolb([res.data], { type: 'text/csv' })
+          const blob = new Blob([res.data], { type: 'text/csv' })
           FileSaver.saveAs(
             blob,
-            `${args.start.replace('/', '')}-${args.end.replace('/', '')}.csv`
+            `${moment(args.start).format('YYYYMMDD')}-${moment(args.end).format(
+              'YYYYMMDD'
+            )}.csv`
           )
         })
     } catch (err) {
