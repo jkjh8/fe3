@@ -97,6 +97,16 @@ function deviceDelete(item) {
   })
 }
 
+async function deviceRefresh(item) {
+  try {
+    $q.loading.show()
+    await api.get(`/device/refresh${encodeURIComponent(JSON.stringify(item))}`)
+    $q.loading.hide()
+  } catch (err) {
+    $q.loading.hide()
+  }
+}
+
 onMounted(() => {
   getDevices()
   getStatus()
