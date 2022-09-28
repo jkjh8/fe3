@@ -3,6 +3,46 @@
 <template>
   <div style="padding-top: 5px">
     <q-btn class="q-px-md q-py-sm" style="border-radius: 10px" flat>
+      <div>Broadcast</div>
+
+      <q-menu :offset="[0, 20]">
+        <q-list separator style="min-width: 300px">
+          <q-item clickable to="/zones">
+            <q-item-section avatar>
+              <q-avatar style="border: solid 1px #eee" rounded>
+                <q-icon
+                  name="svguse:icons.svg#micColor"
+                  size="sm"
+                  color="primary"
+                />
+              </q-avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>실시간 방송</q-item-label>
+              <q-item-label caption>실시간 방송 송출</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item clickable to="/zones">
+            <q-item-section avatar>
+              <q-avatar style="border: solid 1px #eee" rounded>
+                <q-icon
+                  name="svguse:icons.svg#calendar-color"
+                  size="sm"
+                  color="purple-8"
+                />
+              </q-avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>예약 방송</q-item-label>
+              <q-item-label caption>예약 방송 생성 및 등록</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-menu>
+    </q-btn>
+
+    <q-btn class="q-px-md q-py-sm" style="border-radius: 10px" flat>
       <div>Zones</div>
 
       <q-menu :offset="[0, 20]">
