@@ -7,7 +7,7 @@
 
       <q-menu :offset="[0, 20]">
         <q-list separator style="min-width: 300px">
-          <q-item clickable to="/zones">
+          <q-item clickable to="/broadcast/live">
             <q-item-section avatar>
               <q-avatar style="border: solid 1px #eee" rounded>
                 <q-icon
@@ -23,11 +23,11 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable to="/zones">
+          <q-item clickable to="/broadcast/schedule">
             <q-item-section avatar>
               <q-avatar style="border: solid 1px #eee" rounded>
                 <q-icon
-                  name="svguse:icons.svg#calendar-color"
+                  name="svguse:icons.svg#calendarColor"
                   size="sm"
                   color="purple-8"
                 />
@@ -52,7 +52,7 @@
               <q-avatar
                 style="border: solid 1px #eee"
                 rounded
-                icon="svguse:icons.svg#mapColor"
+                icon="svguse:icons.svg#location"
               ></q-avatar>
             </q-item-section>
             <q-item-section>
@@ -107,7 +107,7 @@
               <q-avatar
                 style="border: solid 1px #eee"
                 rounded
-                icon="svguse:icons.svg#usersColor"
+                icon="svguse:icons.svg#userTag"
               ></q-avatar>
             </q-item-section>
             <q-item-section>
