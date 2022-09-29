@@ -97,7 +97,7 @@ onMounted(() => {
       <PageName
         name="사용자 관리"
         caption="사용자 관리 변경 및 삭제"
-        icon="svguse:icons.svg#usersColor"
+        icon="svguse:icons.svg#userTag"
       />
       <q-input v-model="filter" filled dense clearable label="Search">
         <template #append>
